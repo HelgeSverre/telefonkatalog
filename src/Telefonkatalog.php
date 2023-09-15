@@ -11,17 +11,22 @@ class Telefonkatalog
     /**
      * @var DataSource[]
      */
-    protected array $providers;
+    protected array $dataSources;
 
-    public function __construct(array $providers)
+    public function __construct(array $dataSources)
     {
-        $this->providers = $providers;
+        $this->dataSources = $dataSources;
+    }
+
+    public function registerDataSource(DataSource $dataSource): void
+    {
+        $this->dataSources[] = $dataSource;
     }
 
     public function search(string $keyword): Collection
     {
-        foreach ($this->providers as $provider) {
-            $result = rescue(fn () => $provider->search($keyword), report: false);
+        foreach ($this->dataSources as $dataSource) {
+            $result = $this->fetchResults($dataSource, $keyword);
 
             if ($result && $result->isNotEmpty()) {
                 return $result;
@@ -33,21 +38,28 @@ class Telefonkatalog
 
     public function searchAll(string $keyword): Collection
     {
-        $results = [];
+        $allResults = [];
 
-        foreach ($this->providers as $provider) {
-            $result = rescue(fn () => $provider->search($keyword), report: false);
+        foreach ($this->dataSources as $dataSource) {
+            $result = $this->fetchResults($dataSource, $keyword);
 
-            if ($result && $result->isNotEmpty()) {
-                $results = array_merge($results, $result->toArray());
+            if ($result) {
+                $allResults = array_merge($allResults, $result->toArray());
             }
         }
 
-        return collect($results)->filter()->unique(fn (Person $person) => $person->phone)->values();
+        return collect($allResults)->filter()
+            ->unique(fn (Person $person) => $person->phone)
+            ->values();
     }
 
     public function find(string $keyword): ?Person
     {
         return $this->search($keyword)->first();
+    }
+
+    private function fetchResults(DataSource $dataSource, string $keyword): ?Collection
+    {
+        return rescue(fn () => $dataSource->search($keyword), null, report: false);
     }
 }
