@@ -1,32 +1,36 @@
-# Laravel Telefonkatalog: Query Public Norwegian Phone Numbers
+<p align="center"><img src=".github/header.png"></p>
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/helgesverre/laravel-telefonkatalog.svg?style=flat-square)](https://packagist.org/packages/helgesverre/laravel-telefonkatalog)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/helgesverre/laravel-telefonkatalog/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/helgesverre/laravel-telefonkatalog/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/helgesverre/laravel-telefonkatalog/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/helgesverre/laravel-telefonkatalog/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/helgesverre/laravel-telefonkatalog.svg?style=flat-square)](https://packagist.org/packages/helgesverre/laravel-telefonkatalog)
+# Laravel Telefonkatalog: Norwegian Phone Number Lookup Made Easy
 
-Laravel Telefonkatalog offers a unified interface to query Norwegian phone numbers and retrieve associated personal
-details like owner's name, address, and more from public phone directories. This package caters primarily to Norwegian
-developers, designed to enhance customer experience by autofilling form details through phone number lookup – a feature
-becoming increasingly common in today's digital realm.
+![Latest Version on Packagist](https://img.shields.io/packagist/v/helgesverre/laravel-telefonkatalog.svg?style=flat-square)
+![Total Downloads](https://img.shields.io/packagist/dt/helgesverre/laravel-telefonkatalog.svg?style=flat-square)
 
-## Table of Contents
+## Overview
 
-- [Installation](#installation)
-- [Usage](#usage)
-    - [Search](#search)
-    - [Find](#find)
-- [Testing](#testing)
-- [Changelog](#changelog)
-- [Contributing](#contributing)
-- [Legal Threats](#legal-threats)
-- [Security Vulnerabilities](#security-vulnerabilities)
-- [Credits](#credits)
-- [License](#license)
+Laravel Telefonkatalog is a package designed for scraping data from phone directories. It returns the extracted data as
+a list of `Person` objects, making it easier for developers to integrate phone number information into their
+applications.
+
+This package is specifically tailored for Norwegian developers looking to incorporate auto-fill functionality into forms
+on a small scale.
+
+### Important Note
+
+This package is not designed for large-scale phone number scraping, as it does not provide any protection or bypass
+against captchas, anti-botting software, IP-blocking, or rate-limiting. It is exclusively intended for low-traffic web
+apps requiring occasional auto-fill features in customer/user forms.
+
+## Supported Phone Directories
+
+This package currently scrapes data from these phone directories:
+
+- [1881.no](https://1881.no)
+- [1890.no](https://1890.no)
+- [Gulesider.no](https://gulesider.no)
 
 ## Installation
 
-Install the package through Composer:
+Install the package via Composer:
 
 ```bash
 composer require helgesverre/laravel-telefonkatalog
@@ -34,47 +38,38 @@ composer require helgesverre/laravel-telefonkatalog
 
 ## Usage
 
-To use the Telefonkatalog, initialize and make your calls:
+Import the facade, and call the method, no need to make things complicated.
 
 ```php
-$telefonkatalog = new HelgeSverre\Telefonkatalog();
+use HelgeSverre\Telefonkatalog\Facades\Telefonkatalog;
 
-// Search for a Norwegian phone number to retrieve details
-$results = $telefonkatalog->search('12345678');
+// Search by name across all data sources
+$people = Telefonkatalog::search('helge sverre');
 
-// Find the first match for a Norwegian phone number
-$person = $telefonkatalog->find('12345678');
+// Find the first result matching a phone number
+$person = Telefonkatalog::find('95965871');
 ```
 
-### Search
+### Return value.
 
-Query across all data sources using a Norwegian phone number:
+- `find("number or name")` returns a single  `Person` object.
+- `search("number or name")` returns many `Person` objects as a laravel collection.
+
+### Example:
 
 ```php
-$results = $telefonkatalog->search('12345678');
+HelgeSverre\Telefonkatalog\Data\Person {
+  +phone: "95965871"
+  +name: "Helge Sverre Hessevik Liseth"
+  +address: "Vognstølen 29"
+  +city: "Bergen"
+  +postalCode: "5096"
+  +url: "https://www.gulesider.no/oppslag/77190505/person"
+  +source: "Gulesider.no"
+}
 ```
-
-### Find
-
-Retrieve the first matching result:
-
-```php
-$person = $telefonkatalog->find('12345678');
-```
-
-## Testing
-
-Run the tests with:
-
-```bash
-composer test
-```
-
-## Legal Threats
-
-Please direct your cease-and-desist letters to postkasse@datatilsynet.no
 
 ## License
 
-Laravel Telefonkatalog is open-source, licensed under The MIT License (MIT). For more details, see
+Laravel Telefonkatalog is open-source software, licensed under The MIT License (MIT). For more details, refer to
 the [License File](LICENSE.md).
