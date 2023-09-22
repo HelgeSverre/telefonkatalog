@@ -71,5 +71,4 @@ HelgeSverre\Telefonkatalog\Data\Person {
 
 ## License
 
-Laravel Telefonkatalog is open-source software, licensed under The MIT License (MIT). For more details, refer to
-the [License File](LICENSE.md).
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
