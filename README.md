@@ -1,6 +1,6 @@
 <p align="center"><img src=".github/header.png"></p>
 
-# Laravel Telefonkatalog: Norwegian Phone Number Lookup Made Easy
+# Laravel Telefonkatalog: A Package for Norwegian Phone Directory Data Retrieval
 
 ![Latest Version on Packagist](https://img.shields.io/packagist/v/helgesverre/laravel-telefonkatalog.svg?style=flat-square)
 ![Total Downloads](https://img.shields.io/packagist/dt/helgesverre/laravel-telefonkatalog.svg?style=flat-square)
