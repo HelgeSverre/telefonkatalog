@@ -1,12 +1,12 @@
 {
-  "name": "helgesverre/laravel-telefonkatalog",
-  "description": "Query public Norwegian phone numbers to retrieve structured personal data.",
+  "name": "helgesverre/telefonkatalog",
+  "description": "Scrape Norwegian Phone directories with Laravel.",
   "keywords": [
     "HelgeSverre",
     "laravel",
-    "laravel-telefonkatalog"
+    "telefonkatalog"
   ],
-  "homepage": "https://github.com/helgesverre/laravel-telefonkatalog",
+  "homepage": "https://github.com/helgesverre/telefonkatalog",
   "license": "MIT",
   "authors": [
     {

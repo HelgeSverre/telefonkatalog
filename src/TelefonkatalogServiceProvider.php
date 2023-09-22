@@ -12,7 +12,7 @@ class TelefonkatalogServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        $package->name('laravel-telefonkatalog');
+        $package->name('telefonkatalog');
     }
 
     public function packageBooted()
