@@ -2,8 +2,9 @@
 
 # Telefonkatalog: A Package for Norwegian Phone Directory Data Retrieval
 
-![Latest Version on Packagist](https://img.shields.io/packagist/v/helgesverre/telefonkatalog.svg?style=flat-square)
-![Total Downloads](https://img.shields.io/packagist/dt/helgesverre/telefonkatalog.svg?style=flat-square)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/helgesverre/telefonkatalog.svg?style=flat-square)](https://packagist.org/packages/helgesverre/telefonkatalog)
+[![Total Downloads](https://img.shields.io/packagist/dt/helgesverre/telefonkatalog.svg?style=flat-square)](https://packagist.org/packages/helgesverre/telefonkatalog)
+[![License](https://img.shields.io/packagist/l/helgesverre/telefonkatalog.svg?style=flat-square)](https://packagist.org/packages/helgesverre/telefonkatalog)
 
 ## Overview
 
