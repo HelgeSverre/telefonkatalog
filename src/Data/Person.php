@@ -18,6 +18,5 @@ class Person extends Data implements Wireable
         public readonly ?string $postalCode = null,
         public readonly ?string $url = null,
         public readonly ?string $source = null,
-    ) {
-    }
+    ) {}
 }

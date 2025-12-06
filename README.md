@@ -52,7 +52,7 @@ $person = Telefonkatalog::find('95965871');
 
 ### Return value.
 
-- `find("number or name")` returns a single  `Person` object.
+- `find("number or name")` returns a single `Person` object.
 - `search("number or name")` returns many `Person` objects as a laravel collection.
 
 ### Example:
@@ -64,7 +64,7 @@ HelgeSverre\Telefonkatalog\Data\Person {
   +address: "Vognstølen 29"
   +city: "Bergen"
   +postalCode: "5096"
-  +url: "https://www.gulesider.no/oppslag/77190505/person"
+  +url: "https://www.gulesider.no/helge+sverre+hessevik+liseth+bergen/77190505/person"
   +source: "Gulesider.no"
 }
 ```

@@ -19,9 +19,9 @@ class TelefonkatalogServiceProvider extends PackageServiceProvider
     {
         $this->app->bind(Telefonkatalog::class, function () {
             return new Telefonkatalog([
-                new Gulesider(),
-                new Opplysningen1881(),
-                new Opplysningen1890(),
+                new Gulesider,
+                new Opplysningen1881,
+                new Opplysningen1890,
             ]);
         });
     }
